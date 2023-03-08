@@ -1,19 +1,25 @@
+import { create, all } from 'mathjs'
+
 let equation;
 let degree;
+let center;
+
 let equInput = document.querySelector("input.equation");
 let degInput = document.querySelector("input.degree");
-console.log(9)
-equInput.addEventListener("keydown", function(event){
-    if(event.key == "Enter"){
-        equation = equInput.value
-        console.log(equation)
-    }
+let cenInput = document.querySelector("input.center");
+let submitButton = document.querySelector(".submit")
+
+submitButton.addEventListener("click", function(){
+    equation = equInput.value;
+    degree = degInput.value;
+    center = cenInput.value;
+    calc()
 })
 
-degInput.addEventListener("keydown", function(event){
-    if(event.key == "Enter"){
-        degree = degInput.value
-        console.log(degree)
+function calc(){
+    for(let i=0; i<=degree; i++){
+        let deriv = math.derivative(equation, x);
+        console.log(deriv);
     }
-})
-
+    
+}
