@@ -25,7 +25,8 @@ function calc(){
         // console.log(i)
         deriv = math.derivative(deriv, 'x').toString()
         console.log(deriv)
-        polynomial += `+${math.rationalize(`${math.simplify(`(${math.evaluate(deriv, {x:center})}(x-${center})^${i})/${math.factorial(i)}`)}`)}`
+        polynomial += `+${math.rationalize(((math.chain(deriv).evaluate({x:center}).simplify().done())/math.factorial(i)))}(x-${center})^${i}`
+        // `${math.simplify(`(${math.evaluate(deriv, {x:center})}(x-${center})^${i})/${math.factorial(i)}`)}`
     }
     console.log(polynomial);
     return math.simplify(polynomial)
