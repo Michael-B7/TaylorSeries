@@ -1,7 +1,6 @@
 let equation;
 let degree;
 let center;
-
 let equInput = document.querySelector("input.equation");
 let degInput = document.querySelector("input.degree");
 let cenInput = document.querySelector("input.center");
