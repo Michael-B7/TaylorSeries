@@ -1,5 +1,3 @@
-import { create, all } from 'mathjs'
-
 let equation;
 let degree;
 let center;
@@ -13,13 +11,23 @@ submitButton.addEventListener("click", function(){
     equation = equInput.value;
     degree = degInput.value;
     center = cenInput.value;
-    calc()
+    let result = calc()
+    document.querySelector("p").innerHTML = result
 })
 
 function calc(){
-    for(let i=0; i<=degree; i++){
-        let deriv = math.derivative(equation, x);
-        console.log(deriv);
+    // const parser = math.parser();
+    // parser.evaluate(`f(x) = ${equation}`)
+    let deriv = equation;
+    let polynomial = math.evaluate(equation, {x:center}).toString();
+    console.log(deriv)
+    for(let i=1; i<=degree; i++){
+        // console.log(i)
+        deriv = math.derivative(deriv, 'x').toString()
+        console.log(deriv)
+        polynomial += `+${math.rationalize(((math.chain(deriv).evaluate({x:center}).simplify().done())/math.factorial(i)))}(x-${center})^${i}`
+        // `${math.simplify(`(${math.evaluate(deriv, {x:center})}(x-${center})^${i})/${math.factorial(i)}`)}`
     }
-    
+    console.log(polynomial);
+    return math.simplify(polynomial)
 }
