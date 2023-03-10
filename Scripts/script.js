@@ -11,7 +11,7 @@ submitButton.addEventListener("click", function(){
     degree = degInput.value;
     center = cenInput.value;
     let result = calc()
-    document.querySelector("p").innerHTML = result
+    document.querySelector("p").innerHTML = `\sqrt{x}`
 })
 
 function calc(){
@@ -27,6 +27,6 @@ function calc(){
         polynomial += `+${math.rationalize(((math.chain(deriv).evaluate({x:center}).simplify().done())/math.factorial(i)))}(x-${center})^${i}`
         // `${math.simplify(`(${math.evaluate(deriv, {x:center})}(x-${center})^${i})/${math.factorial(i)}`)}`
     }
-    console.log(polynomial);
+    console.log(`sqrt{x}`);
     return math.simplify(polynomial)
 }
